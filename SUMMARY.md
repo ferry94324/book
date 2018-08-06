@@ -2,11 +2,6 @@
 
 ### Java基础知识
 
-* [牛客网错题1](niu-ke-wang-cuo-ti-ji-1.md)
-* [牛客网错题2](niu-ke-wang-cuo-ti-2.md)
-* [牛客网错题3](niu-ke-wang-cuo-ti-3.md)
-* [牛客网错题4](niu-ke-wang-cuo-ti-4.md)
-* [牛客网错题5](niu-ke-wang-cuo-ti-5.md)
 * [8-6-1设计模式](/java基础知识/8-6-1设计模式.md)
 * [8-6-2工厂模式](/java基础知识/8-6-2工厂模式.md)
 * [8-6-3抽象工厂模型](/java基础知识/8-6-3抽象工厂模型.md)
@@ -21,6 +16,17 @@
 * [8-6-12多线程](/java基础知识/8-6-12多线程.md)
 * [8-6-13Java特性](/java基础知识/8-6-13Java特性.md)
 * [8-6-14Java锁](/Java基础知识/8-6-14)
+
+#### Java面试文件
+
+* [Java常问问题](/java面试 文件/java技术.md)
+* [牛客网错题1](/java面试 文件/Java错题1.md)
+* [牛客网错题2](/java面试 文件/Java错题2.md)
+* [牛客网错题3](/java面试 文件/Java错题3.md)
+* [牛客网错题4](/java面试 文件/Java错题4.md)
+* [牛客网错题5](/java面试 文件/Java错题5.md)
+
+
 
 
 
