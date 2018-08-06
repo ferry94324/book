@@ -40,7 +40,6 @@ public void sync(){
 注：同步是一种高开销的操作，因此应该尽量减少同步的内容。 通常没有必要同步整个方法，使用synchronized代码块同步关键代码即可
 
 ```
-
 同步方法和同步代码块的实现
     /**
      * 线程同步的运用
@@ -121,13 +120,13 @@ public void sync(){
 
 #### 3.使用特殊域变量\(volatile\)实现线程同步
 
- a.volatile关键字为域变量的访问提供了一种免锁机制， 
+a.volatile关键字为域变量的访问提供了一种免锁机制，
 
- b.使用volatile修饰域相当于告诉虚拟机该域可能会被其他线程更新， 
+b.使用volatile修饰域相当于告诉虚拟机该域可能会被其他线程更新，
 
- c.因此每次使用该域就要重新计算，而不是使用寄存器中的值 
+c.因此每次使用该域就要重新计算，而不是使用寄存器中的值
 
- d.volatile不会提供任何原子操作，它也不能用来修饰final类型的变量 
+d.volatile不会提供任何原子操作，它也不能用来修饰final类型的变量
 
 ```
 /只给出要修改的代码，其余代码与上同
@@ -145,25 +144,28 @@ public void sync(){
         ｝
 ```
 
-  注：多线程中的非同步问题主要出现在对域的读写上，如果让域自身避免这个问题，则就不需要修改操作该域的方法。  用final域，有锁保护的域和volatile域可以避免非同步的问题。
+注：多线程中的非同步问题主要出现在对域的读写上，如果让域自身避免这个问题，则就不需要修改操作该域的方法。  用final域，有锁保护的域和volatile域可以避免非同步的问题。
 
 #### 4.使用重入锁实现线程同步
 
-在JavaSE5.0中新增了一个java.util.concurrent包来支持同步。   
- ReentrantLock类是可重入、互斥、实现了Lock接口的锁，   
- 它与使用synchronized方法和快具有相同的基本行为和语义，并且扩展了其能力
+在JavaSE5.0中新增了一个java.util.concurrent包来支持同步。  
+ ReentrantLock类是可重入、互斥、实现了Lock接口的锁，  
+ 它与使用synchronized方法和快具有相同的基本行为和语义，并且扩展了其能力
 
-   ReenreantLock类的常用方法有：
+ReenreantLock类的常用方法有：
 
-    ReentrantLock\(\) : 创建一个ReentrantLock实例   
-     lock\(\) : 获得锁   
-     unlock\(\) : 释放锁   
-  注：ReentrantLock\(\)还有一个可以创建公平锁的构造方法，但由于能大幅度降低程序运行效率，不推荐使用。
+```
+ReentrantLock\(\) : 创建一个ReentrantLock实例   
+ lock\(\) : 获得锁   
+ unlock\(\) : 释放锁   
+```
+
+注：ReentrantLock\(\)还有一个可以创建公平锁的构造方法，但由于能大幅度降低程序运行效率，不推荐使用。
 
 ```
 //只给出要修改的代码，其余代码与上同
         class Bank {
-            
+
             private int account = 100;
             //需要声明这个锁
             private Lock lock = new ReentrantLock();
@@ -178,32 +180,40 @@ public void sync(){
                 }finally{
                     lock.unlock();
                 }
-                
+
             }
         ｝
 ```
 
-注：关于Lock对象和synchronized关键字的选择： 
+注：关于Lock对象和synchronized关键字的选择：
 
-        a.最好两个都不用，使用一种java.util.concurrent包提供的机制，能够帮助用户处理所有与锁相关的代码。 
+```
+    a.最好两个都不用，使用一种java.util.concurrent包提供的机制，能够帮助用户处理所有与锁相关的代码。 
 
-        b.如果synchronized关键字能满足用户的需求，就用synchronized，因为它能简化代码 
+    b.如果synchronized关键字能满足用户的需求，就用synchronized，因为它能简化代码 
 
-        c.如果需要更高级的功能，就用ReentrantLock类，此时要注意及时释放锁，否则会出现死锁，通常在finally代码释放锁 。
+    c.如果需要更高级的功能，就用ReentrantLock类，此时要注意及时释放锁，否则会出现死锁，通常在finally代码释放锁 。
+```
 
-#### 5.使用局部变量实现线程同步 
+#### 5.使用局部变量实现线程同步
 
-    如果使用ThreadLocal管理变量，则每一个使用该变量的线程都获得该变量的副本， 副本之间相互独立，这样每一个线程都可以随意修改自己的变量副本，而不会对其他线程产生影响。
+```
+如果使用ThreadLocal管理变量，则每一个使用该变量的线程都获得该变量的副本， 
+```
 
-    ThreadLocal 类的常用方法
+副本之间相互独立，这样每一个线程都可以随意修改自己的变量副本，而不会对其他线程产生影响。
 
-    ThreadLocal\(\) : 创建一个线程本地变量 
+```
+ThreadLocal 类的常用方法
 
-    get\(\) : 返回此线程局部变量的当前线程副本中的值 
+ThreadLocal\(\) : 创建一个线程本地变量 
 
-    initialValue\(\) : 返回此线程局部变量的当前线程的"初始值" 
+get\(\) : 返回此线程局部变量的当前线程副本中的值 
 
-    set\(T value\) : 将此线程局部变量的当前线程副本中的值设置为value
+initialValue\(\) : 返回此线程局部变量的当前线程的"初始值" 
+
+set\(T value\) : 将此线程局部变量的当前线程副本中的值设置为value
+```
 
 ```
 //只改Bank类，其余代码与上同
@@ -224,30 +234,34 @@ public void sync(){
         }
 ```
 
-   注：ThreadLocal与同步机制 
+注：ThreadLocal与同步机制
 
-        a.ThreadLocal与同步机制都是为了解决多线程中相同变量的访问冲突问题。 
+```
+    a.ThreadLocal与同步机制都是为了解决多线程中相同变量的访问冲突问题。 
 
-        b.前者采用以"空间换时间"的方法，后者采用以"时间换空间"的方式
+    b.前者采用以"空间换时间"的方法，后者采用以"时间换空间"的方式
+```
 
 #### 6.使用阻塞队列实现线程同步
 
-前面5种同步方式都是在底层实现的线程同步，但是我们在实际开发当中，应当尽量远离底层结构。   
-    使用javaSE5.0版本中新增的java.util.concurrent包将有助于简化开发。   
-    本小节主要是使用LinkedBlockingQueue&lt;E&gt;来实现线程的同步   
-    LinkedBlockingQueue&lt;E&gt;是一个基于已连接节点的，范围任意的blocking queue。   
+前面5种同步方式都是在底层实现的线程同步，但是我们在实际开发当中，应当尽量远离底层结构。  
+    使用javaSE5.0版本中新增的java.util.concurrent包将有助于简化开发。  
+    本小节主要是使用LinkedBlockingQueue&lt;E&gt;来实现线程的同步  
+    LinkedBlockingQueue&lt;E&gt;是一个基于已连接节点的，范围任意的blocking queue。  
 LinkedBlockingQueue 类常用方法  
-    LinkedBlockingQueue\(\) : 创建一个容量为Integer.MAX\_VALUE的LinkedBlockingQueue   
-    put\(E e\) : 在队尾添加一个元素，如果队列满则阻塞   
-    size\(\) : 返回队列中的元素个数   
-    take\(\) : 移除并返回队头元素，如果队列空则阻塞 
+    LinkedBlockingQueue\(\) : 创建一个容量为Integer.MAX\_VALUE的LinkedBlockingQueue  
+    put\(E e\) : 在队尾添加一个元素，如果队列满则阻塞  
+    size\(\) : 返回队列中的元素个数  
+    take\(\) : 移除并返回队头元素，如果队列空则阻塞
 
-    看了下LinkedBlockingQueue put\(\)和take的源码，在put和take的时候有锁的操作，来保证：
+```
+看了下LinkedBlockingQueue put\(\)和take的源码，在put和take的时候有锁的操作，来保证：
+```
 
 ```
  import java.util.Random;
  import java.util.concurrent.LinkedBlockingQueue;
- 
+
  /**
   * 用阻塞队列实现线程同步 LinkedBlockingQueue的使用
   * 
@@ -267,7 +281,7 @@ LinkedBlockingQueue 类常用方法
       * 定义启动线程的标志，为0时，启动生产商品的线程；为1时，启动消费商品的线程
       *
       /     private int flag = 0;
- 
+
      private class LinkBlockThread implements Runnable {
          @Override
          public void run() {
@@ -310,7 +324,7 @@ LinkedBlockingQueue 类常用方法
              }
          }
      }
- 
+
      public static void main(String[] args) {
          BlockingSynchronizedThread bst = new BlockingSynchronizedThread();
          LinkBlockThread lbt = bst.new LinkBlockThread();
@@ -318,10 +332,50 @@ LinkedBlockingQueue 类常用方法
          Thread thread2 = new Thread(lbt);
          thread1.start();
          thread2.start();
- 
+
      }
- 
+
  }
+```
+
+注：BlockingQueue&lt;E&gt;定义了阻塞队列的常用方法，尤其是三种添加元素的方法，我们要多加注意，当队列满时：
+
+　　add\(\)方法会抛出异常
+
+　　offer\(\)方法返回false
+
+　　put\(\)方法会阻塞
+
+需要使用线程同步的根本原因在于对普通变量的操作不是原子的。
+
+  
+那么什么是原子操作呢？  
+原子操作就是指将读取变量值、修改变量值、保存变量值看成一个整体来操作  
+即-这几种行为要么同时完成，要么都不完成。  
+  
+在java的util.concurrent.atomic包中提供了创建了原子类型变量的工具类，  
+使用该类可以简化线程同步。  
+  
+其中AtomicInteger 表可以用原子方式更新int的值，可用在应用程序中\(如以原子方式增加的计数器\)，  
+但不能用于替换Integer；可扩展Number，允许那些处理机遇数字类的工具和实用工具进行统一访问。  
+  
+AtomicInteger类常用方法：  
+AtomicInteger\(int initialValue\) : 创建具有给定初始值的新的AtomicInteger  
+addAddGet\(int dalta\) : 以原子方式将给定值与当前值相加  
+get\(\) : 获取当前值
+
+```
+  class Bank {
+          private AtomicInteger account = new AtomicInteger(100);
+  
+          public AtomicInteger getAccount() {
+              return account;
+          }
+  
+          public void save(int money) {
+              account.addAndGet(money);
+        }
+     } 
 ```
 
 
