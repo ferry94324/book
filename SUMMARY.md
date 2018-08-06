@@ -13,4 +13,5 @@
 * [8-6-4单例模型](8-6-4.md)
 * [8-6-5适配器模式](8-6-5shi-pei-qi-mo-shi.md)
 * [8-6-6桥接模式](8-6-6qiao-jie-mo-shi.md)
+* [8-6-7观察者模式](8-6-7guan-cha-zhe-mo-shi.md)
 
