@@ -1,24 +1,26 @@
 # Summary
 
-* [Introduction](README.md)
-* [java面试题](javamian-shi-ti.md)
+### Java基础知识
+
 * [牛客网错题1](niu-ke-wang-cuo-ti-ji-1.md)
 * [牛客网错题2](niu-ke-wang-cuo-ti-2.md)
 * [牛客网错题3](niu-ke-wang-cuo-ti-3.md)
 * [牛客网错题4](niu-ke-wang-cuo-ti-4.md)
 * [牛客网错题5](niu-ke-wang-cuo-ti-5.md)
-* [8-6-1设计模式](8-6-1she-ji-mo-shi.md)
-* [8-6-2工厂模式](8-6-2.md)
-* [8-6-3抽象工厂模型](8-6-3chou-xiang-gong-chang-mo-xing.md)
-* [8-6-4单例模型](8-6-4.md)
-* [8-6-5适配器模式](8-6-5shi-pei-qi-mo-shi.md)
-* [8-6-6桥接模式](8-6-6qiao-jie-mo-shi.md)
-* [8-6-7观察者模式](8-6-7guan-cha-zhe-mo-shi.md)
-* [8-6-8序列化和反序列化](8-6-8xu-lie-hua-he-fan-xu-lie-hua.md)
-* [8-6-9集合框架](8-6-9ji-he-kuang-jia.md)
-* [8-6-10泛型](8-6-10fan-xing.md)
-* [8-6-11网络编程](8-6-11wang-luo-bian-cheng.md)
-* [8-6-12多线程](8-6-12duo-xian-cheng.md)
-* [8-6-13Java特性](8-6-13javate-xing.md)
-* [8-6-14Java锁](8-6-14javasuo.md)
+* [8-6-1设计模式](/java基础知识/8-6-1设计模式.md)
+* [8-6-2工厂模式](/java基础知识/8-6-2工厂模式.md)
+* [8-6-3抽象工厂模型](/java基础知识/8-6-3抽象工厂模型.md)
+* [8-6-4单例模型](/java基础知识/8-6-4单例模型.md)
+* [8-6-5适配器模式](/java基础知识/8-6-5适配器模式.md)
+* [8-6-6桥接模式](/java基础知识/8-6-6桥接模式.md)
+* [8-6-7观察者模式](/java基础知识/8-6-7观察者模式.md)
+* [8-6-8序列化和反序列化](/java基础知识/8-6-8序列化和反序列化.md)
+* [8-6-9集合框架](/java基础知识/8-6-9集合框架.md)
+* [8-6-10泛型](/java基础知识/8-6-10泛型.md)
+* [8-6-11网络编程](/java基础知识/8-6-11网络编程.md)
+* [8-6-12多线程](/java基础知识/8-6-12多线程.md)
+* [8-6-13Java特性](/java基础知识/8-6-13Java特性.md)
+* [8-6-14Java锁](/Java基础知识/8-6-14)
+
+
 
