@@ -15,4 +15,5 @@
 * [8-6-6桥接模式](8-6-6qiao-jie-mo-shi.md)
 * [8-6-7观察者模式](8-6-7guan-cha-zhe-mo-shi.md)
 * [8-6-8序列化和反序列化](8-6-8xu-lie-hua-he-fan-xu-lie-hua.md)
+* [8-6-9集合框架](8-6-9ji-he-kuang-jia.md)
 
