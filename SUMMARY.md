@@ -12,4 +12,5 @@
 * [8-6-3抽象工厂模型](8-6-3chou-xiang-gong-chang-mo-xing.md)
 * [8-6-4单例模型](8-6-4.md)
 * [8-6-5适配器模式](8-6-5shi-pei-qi-mo-shi.md)
+* [8-6-6桥接模式](8-6-6qiao-jie-mo-shi.md)
 
