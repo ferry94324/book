@@ -17,12 +17,12 @@
 
 ## Java面试
 
-* [Java技术](//java面试 文件/java技术.md)
-* [Java错题1](//java面试 文件/Java错题1.md)
-* [Java错题2](//java面试 文件/Java错题2.md)
-* [Java错题3](//java面试 文件/Java错题3.md)
-* [Java错题4](//java面试 文件/Java错题4.md)
-* [Java错题5](//java面试 文件/Java错题5.md)
+* [Java技术](/java面试文件/java技术.md)
+* [Java错题1](/java面试文件/Java错题1.md)
+* [Java错题2](/java面试文件/Java错题2.md)
+* [Java错题3](/java面试文件/Java错题3.md)
+* [Java错题4](/java面试文件/Java错题4.md)
+* [Java错题5](/java面试文件/Java错题5.md)
 
 
 
