@@ -18,4 +18,5 @@
 * [8-6-9集合框架](8-6-9ji-he-kuang-jia.md)
 * [8-6-10泛型](8-6-10fan-xing.md)
 * [8-6-11网络编程](8-6-11wang-luo-bian-cheng.md)
+* [8-6-12多线程](8-6-12duo-xian-cheng.md)
 
