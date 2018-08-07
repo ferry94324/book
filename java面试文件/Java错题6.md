@@ -44,12 +44,13 @@
 
 【**解析**】SimpleDateFormat是线程不安全的类，一般不要定义为static变量，如果定义为static，必须加锁，或者使用DateUtils工具类。SimpleDateFormat类内部有一个Calendar对象引用,它用来储存和这个SimpleDateFormat相关的日期信息,例如sdf.parse\(dateStr\),sdf.format\(date\) 诸如此类的方法参数传入的日期相关String,Date等等, 都是交由Calendar引用来储存的.这样就会导致一个问题,如果你的SimpleDateFormat是个static的, 那么多个thread 之间就会共享这个SimpleDateFormat, 同时也是共享这个Calendar引用。单例、多线程、又有成员变量（这个变量在方法中是可以修改的），这个场景是不是很像servlet，在高并发的情况下，容易出现幻读成员变量的现象，故说SimpleDateFormat是线程不安全的对象。
 
-**7.关于访问权限说法正确 的是 ？ \( \)**
+**7.  
+关于访问权限说法正确 的是 ？ \( \)**
 
-* **外部类前面可以修饰public,protected和private  **
-* **成员内部类前面可以修饰public,protected和private  **
-* **局部内部类前面可以修饰public,protected和private  **
-* **以上说法都不正确**
+* 外部类前面可以修饰public,protected和private
+* 成员内部类前面可以修饰public,protected和private
+* 局部内部类前面可以修饰public,protected和private
+* 以上说法都不正确
 
 【**解析**】（ 1 ）对于外部类而言，它也可以使用访问控制符修饰，但外部类只能有两种访问控制级别： public 和默认。因为外部类没有处于任何类的内部，也就没有其所在类的内部、所在类的子类两个范围，因此 private 和 protected 访问控制符对外部类没有意义。
 
