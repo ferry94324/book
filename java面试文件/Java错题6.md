@@ -59,10 +59,10 @@
 
 **8.以下声明合法的是**
 
-* **default  String  s  **
-* **public  final  static  native  int  w\( \)  **
-* **abstract  double  d  **
-* **abstract  final  double  hyperbolicCosine\( \)**
+* default  String  s
+* \*\*public  final  static  native  int  w\( \)
+* abstract  double  d
+* abstract  final  double  hyperbolicCosine\( \)
 
 【**解析**】
 
