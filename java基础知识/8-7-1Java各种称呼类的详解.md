@@ -32,7 +32,7 @@ class Test{}//Test就是文件类
 
 ```
 A nested class is any class whose declaration occurs within the body of 
-another class or interface. 
+another class or interface.
 ```
 
 说的简单一点，就是定义在类（这里还包括接口，下同）里面的类。所以说，以下所有的类都可以称为嵌套类。嵌套类分为两种：静态嵌套类和非静态嵌套类，非静态嵌套类就是内部类（inner class）。
@@ -76,21 +76,8 @@ declared static.
 这里说的是非静态成员内部类（如果静态嵌套类也算是成员类一种的话），non-static member \(inner\) class。而一般说的也是这种，但从技术上来看，成员类应该还包括静态嵌套类。
 
 ```
-A member 
-class
-is
- a 
-class
- whose declaration 
-is
- directly enclosed 
-in
-
-another 
-class
-or
-interface
- declaration.
+A member class is a class whose declaration is directly enclosed in 
+another class or interface declaration.
 ```
 
 成员类算是最常见最常用的一种内部类，我们一般说的内部类说的就是成员类：在类里面，但不在块、构造器、方法里面。
@@ -99,15 +86,8 @@ interface
 //成员类，从技术上来说，可以分为两种：成员内部类和成员嵌套类。
 //1.成员内部类即这里说的成员类，全称是非静态成员内部类
 //2.成员嵌套类即上面的静态嵌套类
-public
-class
- Main{
-
-public
-class
- MemberClass{}
-//成员内部类，常简称为成员类
-
+public class Main{
+    public class MemberClass{}//成员内部类，常简称为成员类
 }
 ```
 
@@ -116,9 +96,7 @@ class
 
 1. 成员（member），只要是在类里面的（但不在块、构造器、方法内），都是成员：可以是变量，就是成员变量（一般又称为成员字段，Field）；可以是方法，好吧，方法都是成员（因为Java中方法不可能位于类外）的；当然，同样的，也可以是接口、枚举、注释类以及类。
 2. 关于static理解，有static修饰的是类本身属性（共性），所以访问可以不通过类的实例对象，而非static修饰的，是对象属性（个性），必须通过类的实例对象访问，因为个性是个体的属性啊，当然要创建出个体，然后这个个性才有意义。
-3. 关于enclose class，enclose method，enclose constructor属性，可以理解为这个类是被类、还是方法、构造器包装起来的。关于这些属性，可以参考Class类：
-   [Java源码解析\(2\) —— Class\(1\)](http://blog.csdn.net/a327369238/article/details/52577040)
-   。
+3. 关于enclose class，enclose method，enclose constructor属性，可以理解为这个类是被类、还是方法、构造器包装起来的。
 
 ### 局部类（本地类） {#局部类本地类}
 
@@ -126,66 +104,26 @@ local nested class，局部嵌套类，简称局部类，局部类所属范围�
 定义：
 
 ```
-A 
-local
-class
-is
- a nested 
-class
- (§
-8
-) 
-that
-is
-not
- a member 
-of
- any 
-class
-and
-that
- has a 
-name
-.
+A local class is a nested class (§8) that is not a member of any class 
+and that has a name.
 ```
 
 翻译过来就是：局部类是嵌套类，但不是成员类，而且有名称（不是匿名类）。
 
 ```
-public
-class
- Test {
+public class Test {
     {
-        class AA{}
-//块内局部类
-
+        class AA{}//块内局部类
     }
-
-public
-Test
-(){
-        class AA{}
-//构造器内局部类
-
+    public Test(){
+        class AA{}//构造器内局部类
     }
-
-public
-static
-void
-main
-(String[] args){
+    public static void main(String[] args){
     }
-
-public
-void
-test
-(){
-        class AA{}
-//方法内局部类
-
+    public void test(){
+        class AA{}//方法内局部类
     }
 }
-
 //注意到了吧，可以同名，编译后，形成诸如：外部类名称+$+同名顺序+局部类名称
 //Test$1AA.class/Test$2AA.class/Test$3AA.class
 ```
@@ -199,67 +137,28 @@ test
 定义：
 
 ```
-An anonymous 
-class
- declaration 
-is
- automatically derived 
-from
- a 
-class
-
-instance creation expression 
-by
-the
- Java compiler
+An anonymous class declaration is automatically derived from a class 
+instance creation expression by the Java compiler
 ```
 
 匿名类，就是没有名称的类，其名称由Java编译器给出，一般是形如：外部类名称+$+匿名类顺序，没有名称也就是其他地方就不能引用，不能实例化，只用一次，当然也就不能有构造器。  
 　　匿名类根据位于地方不同分为：成员匿名类和局部匿名类。
 
 ```
-public
-class
- Test {
-    InterfaceA a = 
-new
- InterfaceA() {};
-//成员匿名类
-public
-static
-void
-main
-(String[] args){
-        InterfaceA a = 
-new
- InterfaceA() {};
-//局部匿名类
-//以上两种是通过实现接口实现匿名类，称为接口式匿名类，也可以通过继承类
-
-        Test test = 
-new
- Test(){};
-//继承式匿名类
-//还可以是位于参数上
-new
- Thread(
-new
- Runnable() {
+public class Test {
+    InterfaceA a = new InterfaceA() {};//成员匿名类
+    public static void main(String[] args){
+        InterfaceA a = new InterfaceA() {};//局部匿名类
+        //以上两种是通过实现接口实现匿名类，称为接口式匿名类，也可以通过继承类
+        Test test = new Test(){};//继承式匿名类
+        //还可以是位于参数上
+        new Thread(new Runnable() {
             @Override
-
-public
-void
-run
-() {
+            public void run() {
             }
-        }).start();
-//属于局部匿名类一种
-
+        }).start();//属于局部匿名类一种
     }
-
-private
-interface
- InterfaceA{}
+    private interface InterfaceA{}
 }
 ```
 
