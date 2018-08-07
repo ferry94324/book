@@ -47,10 +47,10 @@
 **7.  
 关于访问权限说法正确 的是 ？ \( \)**
 
-* 外部类前面可以修饰public,protected和private
-* 成员内部类前面可以修饰public,protected和private
-* 局部内部类前面可以修饰public,protected和private
-* 以上说法都不正确
+* **外部类前面可以修饰public,protected和private**
+* **成员内部类前面可以修饰public,protected和private**
+* **局部内部类前面可以修饰public,protected和private**
+* **以上说法都不正确**
 
 【**解析**】（ 1 ）对于外部类而言，它也可以使用访问控制符修饰，但外部类只能有两种访问控制级别： public 和默认。因为外部类没有处于任何类的内部，也就没有其所在类的内部、所在类的子类两个范围，因此 private 和 protected 访问控制符对外部类没有意义。
 
