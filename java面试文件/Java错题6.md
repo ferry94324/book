@@ -84,9 +84,9 @@ RMI 采用stubs 和 skeletons 来进行远程对象\(remote object\)的通讯。
 
 **10. 接口中方法的 定义**
 
-* **public void main\(String \[\] args\);  **
-* **private int getSum\(\);  **
-* **boolean setFlag\(Boolean \[\] test\);  **
+* **public void main\(String \[\] args\);**
+* **private int getSum\(\);**
+* **boolean setFlag\(Boolean \[\] test\);**
 * **public float get\(int x\);**
 
 【**解析**】：
