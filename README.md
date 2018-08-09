@@ -23,6 +23,7 @@
 * [Java错题3](/java面试文件/Java错题3.md)
 * [Java错题4](/java面试文件/Java错题4.md)
 * [Java错题5](/java面试文件/Java错题5.md)
+* [Java错题6](/java面试文件/Java错题6.md)
 
 
 
