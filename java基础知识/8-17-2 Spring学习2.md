@@ -254,12 +254,12 @@ Spring框架提供了以下四种方式来管理bean的生命周期事件：
 * Bean配置文件中的Custom init\(\)方法和destroy\(\)方法
 * @PostConstruct和@PreDestroy注解方式
 
-使用customInit\(\)和 customDestroy\(\)方法管理bean生命周期的代码样例如下：
+使用customInit\(\)和 customDestroy\(\)方法管理bean生命周期的代码样例如下：
 
 ```
 <beans>    
     <bean id="demoBean" class="com.somnus.task.DemoBean" init-method="customInit" destroy-method="customDestroy"></bean>    
-</beans> 
+</beans>
 ```
 
 ### 11、Spring Bean的作用域之间有什么区别？
@@ -284,7 +284,7 @@ Spring容器中的bean可以分为5个范围。所有范围的名称都是自说
 public class Customer{    
     private Person person;    
     //Setters and Getters    
-}   
+}
 ```
 
 ```
@@ -313,18 +313,17 @@ public class Person{
 
 ### 13、Spring框架中的单例Beans是线程安全的么？
 
-Spring框架并没有对单例bean进行任何多线程的封装处理。关于单例bean的线程安全和并发问题需要开发者自行去搞定。但实际上，大部分的Spring bean并没有可变的状态\(比如Serview类和DAO类\)，所以在某种程度上说Spring的单例bean是线程安全的。如果你的bean有多种状态的话（比如 View Model 对象），就需要自行保证线程安全。最浅显的解决办法就是将多态bean的作用域由“singleton”变更为“prototype”。
+Spring框架并没有对单例bean进行任何多线程的封装处理。关于单例bean的线程安全和并发问题需要开发者自行去搞定。但实际上，大部分的Spring bean并没有可变的状态\(比如Serview类和DAO类\)，所以在某种程度上说Spring的单例bean是线程安全的。如果你的bean有多种状态的话（比如 View Model 对象），就需要自行保证线程安全。  
+最浅显的解决办法就是将多态bean的作用域由“singleton”变更为“prototype”。
 
 ### 14、请举例说明如何在Spring中注入一个Java Collection？
 
-
-
 Spring提供了以下四种集合类的配置元素：
 
-* &lt;list&gt; :   该标签用来装配可重复的list值。
-* &lt;set&gt; :    该标签用来装配没有重复的set值。
-* &lt;map&gt;:   该标签可用来注入键和值可以为任何类型的键值对。
-* &lt;props&gt; : 该标签支持注入键和值都是字符串类型的键值对。
+* &lt;list&gt; :   该标签用来装配可重复的list值。
+* &lt;set&gt; :    该标签用来装配没有重复的set值。
+* &lt;map&gt;:   该标签可用来注入键和值可以为任何类型的键值对。
+* &lt;props&gt; : 该标签支持注入键和值都是字符串类型的键值对。
 
 下面看一下具体的例子：
 
@@ -341,7 +340,7 @@ Spring提供了以下四种集合类的配置元素：
            <value>UK</value>    
         </list>    
       </property>    
-     
+
      <!-- java.util.Set -->    
      <property name="customSet">    
         <set>    
@@ -351,7 +350,7 @@ Spring提供了以下四种集合类的配置元素：
            <value>UK</value>    
         </set>    
       </property>    
-     
+
      <!-- java.util.Map -->    
      <property name="customMap">    
         <map>    
@@ -361,7 +360,7 @@ Spring提供了以下四种集合类的配置元素：
            <entry key="4" value="UK"/>    
         </map>    
       </property>    
-     
+
     <!-- java.util.Properties -->    
     <property name="customProperies">    
         <props>    
@@ -369,18 +368,18 @@ Spring提供了以下四种集合类的配置元素：
             <prop key="support">support@nospam.com</prop>    
         </props>    
     </property>    
-     
+
    </bean>    
-</beans>    
+</beans>
 ```
 
 ### 15、如何向Spring Bean中注入一个Java.util.Properties？
 
-第一种方法是使用如下面代码所示的&lt;props&gt; 标签：
+第一种方法是使用如下面代码所示的&lt;props&gt; 标签：
 
 ```
 <bean id="adminUser" class="com.somnus.common.Customer">    
-     
+
     <!-- java.util.Properties -->    
     <property name="emails">    
         <props>    
@@ -388,8 +387,8 @@ Spring提供了以下四种集合类的配置元素：
             <prop key="support">support@nospam.com</prop>    
         </props>    
     </property>    
-     
-</bean> 
+
+</bean>
 ```
 
 也可用”util:”命名空间来从properties文件中创建出一个propertiesbean，然后利用setter方法注入bean的引用。
@@ -407,13 +406,13 @@ Spring提供了以下四种集合类的配置元素：
 除了bean配置文件中提供的自动装配模式，还可以使用@Autowired注解来自动装配指定的bean。在使用@Autowired注解之前需要在按照如下的配置方式在Spring配置文件进行配置才可以使用。
 
 ```
-<context:annotation-config />  
+<context:annotation-config />
 ```
 
 也可以通过在配置文件中配置AutowiredAnnotationBeanPostProcessor达到相同的效果。
 
 ```
-<bean class ="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>   
+<bean class ="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 ```
 
 配置好以后就可以使用`@Autowired`来标注了
@@ -426,8 +425,6 @@ public EmployeeDAOImpl ( EmployeeManager manager ) {
 ```
 
 ### 17、请解释自动装配模式的区别？
-
-
 
 在Spring框架中共有5种自动装配，让我们逐一分析。
 
@@ -444,14 +441,14 @@ public EmployeeDAOImpl ( EmployeeManager manager ) {
 
 ### 18、如何开启基于注解的自动装配？
 
-要使用 @Autowired，需要注册AutowiredAnnotationBeanPostProcessor，可以有以下两种方式来实现：
+要使用 @Autowired，需要注册AutowiredAnnotationBeanPostProcessor，可以有以下两种方式来实现：
 
-1、引入配置文件中的&lt;bean&gt;下引入 &lt;context:annotation-config&gt;
+1、引入配置文件中的&lt;bean&gt;下引入 &lt;context:annotation-config&gt;
 
 ```
 <beans>    
     <context:annotation-config />    
-</beans> 
+</beans>
 ```
 
 2、在bean配置文件中直接引入AutowiredAnnotationBeanPostProcessor
@@ -466,7 +463,7 @@ public EmployeeDAOImpl ( EmployeeManager manager ) {
 
 在产品级别的应用中，IoC容器可能声明了数十万了bean，bean与bean之间有着复杂的依赖关系。设值注解方法的短板之一就是验证所有的属性是否被注解是一项十分困难的操作。可以通过在&lt;bean&gt;中设置“dependency-check”来解决这个问题。
 
-在应用程序的生命周期中，你可能不大愿意花时间在验证所有bean的属性是否按照上下文文件正确配置。或者你宁可验证某个bean的特定属性是否被正确的设置。即使是用“dependency-check”属性也不能很好的解决这个问题，在这种情况下，你需要使用`@Required` 注解。
+在应用程序的生命周期中，你可能不大愿意花时间在验证所有bean的属性是否按照上下文文件正确配置。或者你宁可验证某个bean的特定属性是否被正确的设置。即使是用“dependency-check”属性也不能很好的解决这个问题，在这种情况下，你需要使用`@Required` 注解。
 
 需要用如下的方式使用来标明bean的设值方法。
 
@@ -481,26 +478,24 @@ public class EmployeeFactoryBean extends AbstractFactoryBean<Object>{
         this.designation = designation;    
     }    
     //more code here    
-}    
+}
 ```
 
 RequiredAnnotationBeanPostProcessor是Spring中的后置处理用来验证被@Required 注解的bean属性是否被正确的设置了。在使用RequiredAnnotationBeanPostProcesso来验证bean属性之前，首先要在IoC容器中对其进行注册：
 
 ```
-<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />  
+<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
 ```
 
-但是如果没有属性被用 `@Required`注解过的话，后置处理器会抛出一个`BeanInitializationException`异常。
+但是如果没有属性被用 `@Required`注解过的话，后置处理器会抛出一个`BeanInitializationException`异常。
 
 ### 20、请举例解释@Autowired注解？
 
-
-
 @Autowired注解对自动装配何时何处被实现提供了更多细粒度的控制。@Autowired注解可以像@Required注解、构造器一样被用于在bean的设值方法上自动装配bean的属性，一个参数或者带有任意名称或带有多个参数的方法。
 
-比如，可以在设值方法上使用@Autowired注解来替代配置文件中的&lt;property&gt;元素。当Spring容器在setter方法上找到@Autowired注解时，会尝试用byType 自动装配。
+比如，可以在设值方法上使用@Autowired注解来替代配置文件中的&lt;property&gt;元素。当Spring容器在setter方法上找到@Autowired注解时，会尝试用byType 自动装配。
 
-当然我们也可以在构造方法上使用`@Autowired` 注解。带有`@Autowired` 注解的构造方法意味着在创建一个bean时将会被自动装配，即便在配置文件中使用`<constructor-arg>` 元素。
+当然我们也可以在构造方法上使用`@Autowired` 注解。带有`@Autowired` 注解的构造方法意味着在创建一个bean时将会被自动装配，即便在配置文件中使用`<constructor-arg>` 元素。
 
 ```
 public class TextEditor {    
@@ -513,23 +508,23 @@ public class TextEditor {
    public void spellCheck(){    
       spellChecker.checkSpelling();    
    }    
-}    
+}
 ```
 
 下面是没有构造参数的配置方式：
 
 ```
 <beans>    
-     
+
    <context:annotation-config/>    
-     
+
    <!-- Definition for textEditor bean without constructor-arg  -->    
    <bean id="textEditor" class="com.howtodoinjava.TextEditor"/>    
-     
+
    <!-- Definition for spellChecker bean -->    
    <bean id="spellChecker" class="com.howtodoinjava.SpellChecker"/>    
-     
-</beans>    
+
+</beans>
 ```
 
 ### 21、请举例说明@Qualifier注解？
@@ -542,21 +537,21 @@ public class TextEditor {
 public class Customer{    
     @Autowired    
     private Person person;    
-} 
+}
 ```
 
 下面我们要在配置文件中来配置Person类。
 
 ```
 <bean id="customer" class="com.somnus.common.Customer" />    
-     
+
 <bean id="personA" class="com.somnus.common.Person" >    
     <property name="name" value="lokesh" />    
 </bean>    
-     
+
 <bean id="personB" class="com.somnus.common.Person" >    
     <property name="name" value="alex" />    
-</bean> 
+</bean>
 ```
 
 Spring会知道要自动装配哪个person bean么？不会的，但是运行上面的示例时，会抛出下面的异常：
@@ -564,18 +559,100 @@ Spring会知道要自动装配哪个person bean么？不会的，但是运行上
 ```
 Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException:    
     No unique bean of type [com.howtodoinjava.common.Person] is defined:    
-        expected single matching bean but found 2: [personA, personB]  
+        expected single matching bean but found 2: [personA, personB]
 ```
 
-要解决上面的问题，需要使用 `@Quanlifier`注解来告诉Spring容器要装配哪个bean：
+要解决上面的问题，需要使用 `@Quanlifier`注解来告诉Spring容器要装配哪个bean：
 
 ```
 public class Customer{    
     @Autowired    
     @Qualifier("personA")    
     private Person person;    
+}
+```
+
+### 22、构造方法注入和设值注入有什么区别？
+
+请注意以下明显的区别：
+
+1. 在设值注入方法支持大部分的依赖注入，如果我们仅需要注入int、string和long型的变量，我们不要用设值的方法注入。对于基本类型，如果我们没有注入的话，可以为基本类型设置默认值。在构造方法注入不支持大部分的依赖注入，因为在调用构造方法中必须传入正确的构造参数，否则的话为报错。
+2. 设值注入不会重写构造方法的值。如果我们对同一个变量同时使用了构造方法注入又使用了设置方法注入的话，那么构造方法将不能覆盖由设值方法注入的值。很明显，因为构造方法尽在对象被创建时调用。
+3. 在使用设值注入时有可能还不能保证某种依赖是否已经被注入，也就是说这时对象的依赖关系有可能是不完整的。而在另一种情况下，构造器注入则不允许生成依赖关系不完整的对象。
+4. 在设值注入时如果对象A和对象B互相依赖，在创建对象A时Spring会抛出s
+   ObjectCurrentlyInCreationException异常，因为在B对象被创建之前A对象是不能被创建的，反之亦然。所以Spring用设值注入的方法解决了循环依赖的问题，因对象的设值方法是在对象被创建之前被调用的。
+
+### 23、Spring框架中有哪些不同类型的事件？
+
+Spring的`ApplicationContext` 提供了支持事件和代码中监听器的功能。
+
+我们可以创建bean用来监听在`ApplicationContext` 中发布的事件。`ApplicationEven`t类和在`ApplicationContext接口`中处理的事件，如果一个bean实现了`ApplicationListener`接口，当一个`ApplicationEvent` 被发布以后，bean会自动被通知。
+
+```
+public class AllApplicationEventListener implements ApplicationListener < ApplicationEvent >{    
+    @Override    
+    public void onApplicationEvent(ApplicationEvent applicationEvent)    
+    {    
+        //process event    
+    }    
+}  
+```
+
+Spring 提供了以下5中标准的事件：
+
+1. 上下文更新事件（ContextRefreshedEvent）：该事件会在ApplicationContext被初始化或者更新时发布。也可以在调用ConfigurableApplicationContext 接口中的refresh\(\)方法时被触发。
+2. 上下文开始事件（ContextStartedEvent）：当容器调用ConfigurableApplicationContext的Start\(\)方法开始/重新开始容器时触发该事件。
+3. 上下文停止事件（ContextStoppedEvent）：当容器调用ConfigurableApplicationContext的Stop\(\)方法停止容器时触发该事件。
+4. 上下文关闭事件（ContextClosedEvent）：当ApplicationContext被关闭时触发该事件。容器被关闭时，其管理的所有单例Bean都被销毁。
+5. 请求处理事件（RequestHandledEvent）：在Web应用中，当一个http请求（request）结束触发该事件。
+
+除了上面介绍的事件以外，还可以通过扩展`ApplicationEvent` 类来开发自定义的事件。
+
+```
+public class CustomApplicationEvent extends ApplicationEvent{    
+    public CustomApplicationEvent ( Object source, final String msg ){    
+        super(source);    
+        System.out.println("Created a Custom event");    
+    }    
 } 
 ```
+
+为了监听这个事件，还需要创建一个监听器：
+
+```
+public class CustomEventListener implements ApplicationListener < CustomApplicationEvent >{    
+    @Override    
+    public void onApplicationEvent(CustomApplicationEvent applicationEvent) {    
+        //handle event    
+    }    
+} 
+```
+
+之后通过applicationContext接口的publishEvent\(\)方法来发布自定义事件。
+
+```
+CustomApplicationEvent customEvent = new CustomApplicationEvent(applicationContext, "Test message");    
+applicationContext.publishEvent(customEvent); 
+```
+
+### 24、FileSystemResource和ClassPathResource有何区别？
+
+在FileSystemResource 中需要给出spring-config.xml文件在你项目中的相对路径或者绝对路径。在ClassPathResource中spring会在ClassPath中自动搜寻配置文件，所以要把ClassPathResource 文件放在ClassPath下。
+
+如果将spring-config.xml保存在了src文件夹下的话，只需给出配置文件的名称即可，因为src文件夹是默认。
+
+简而言之，ClassPathResource在环境变量中读取配置文件，FileSystemResource在配置文件中读取配置文件。
+
+### 25、Spring 框架中都用到了哪些设计模式？
+
+* Spring框架中使用到了大量的设计模式，下面列举了比较有代表性的：
+* 代理模式—在AOP和remoting中被用的比较多。
+* 单例模式—在spring配置文件中定义的bean默认为单例模式。
+* 模板方法—用来解决代码重复的问题。比如. RestTemplate, JmsTemplate, JpaTemplate。
+* 前端控制器—Spring提供了DispatcherServlet来对请求进行分发。
+* 视图帮助\(View Helper \)—Spring提供了一系列的JSP标签，高效宏来辅助将分散的代码整合在视图里。
+* 依赖注入—贯穿于BeanFactory / ApplicationContext接口的核心理念。
+* 工厂模式—BeanFactory用来创建对象的实例。
 
 
 
