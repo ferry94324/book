@@ -1,4 +1,4 @@
-# Spring学习
+# Spring学习1
 
 ## Spring概述
 
@@ -123,8 +123,6 @@ Application contexts提供一种方法处理文本消息，一个通常的做法
 ## 依赖注入
 
 ---
-
-
 
 ### 18. 什么是Spring的依赖注入？
 
