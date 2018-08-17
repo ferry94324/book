@@ -584,9 +584,9 @@ public class Customer{
 
 ### 23、Spring框架中有哪些不同类型的事件？
 
-Spring的`ApplicationContext` 提供了支持事件和代码中监听器的功能。
+Spring的`ApplicationContext` 提供了支持事件和代码中监听器的功能。
 
-我们可以创建bean用来监听在`ApplicationContext` 中发布的事件。`ApplicationEven`t类和在`ApplicationContext接口`中处理的事件，如果一个bean实现了`ApplicationListener`接口，当一个`ApplicationEvent` 被发布以后，bean会自动被通知。
+我们可以创建bean用来监听在`ApplicationContext` 中发布的事件。`ApplicationEven`t类和在`ApplicationContext接口`中处理的事件，如果一个bean实现了`ApplicationListener`接口，当一个`ApplicationEvent` 被发布以后，bean会自动被通知。
 
 ```
 public class AllApplicationEventListener implements ApplicationListener < ApplicationEvent >{    
@@ -595,7 +595,7 @@ public class AllApplicationEventListener implements ApplicationListener < Applic
     {    
         //process event    
     }    
-}  
+}
 ```
 
 Spring 提供了以下5中标准的事件：
@@ -606,7 +606,7 @@ Spring 提供了以下5中标准的事件：
 4. 上下文关闭事件（ContextClosedEvent）：当ApplicationContext被关闭时触发该事件。容器被关闭时，其管理的所有单例Bean都被销毁。
 5. 请求处理事件（RequestHandledEvent）：在Web应用中，当一个http请求（request）结束触发该事件。
 
-除了上面介绍的事件以外，还可以通过扩展`ApplicationEvent` 类来开发自定义的事件。
+除了上面介绍的事件以外，还可以通过扩展`ApplicationEvent` 类来开发自定义的事件。
 
 ```
 public class CustomApplicationEvent extends ApplicationEvent{    
@@ -614,7 +614,7 @@ public class CustomApplicationEvent extends ApplicationEvent{
         super(source);    
         System.out.println("Created a Custom event");    
     }    
-} 
+}
 ```
 
 为了监听这个事件，还需要创建一个监听器：
@@ -625,14 +625,14 @@ public class CustomEventListener implements ApplicationListener < CustomApplicat
     public void onApplicationEvent(CustomApplicationEvent applicationEvent) {    
         //handle event    
     }    
-} 
+}
 ```
 
 之后通过applicationContext接口的publishEvent\(\)方法来发布自定义事件。
 
 ```
 CustomApplicationEvent customEvent = new CustomApplicationEvent(applicationContext, "Test message");    
-applicationContext.publishEvent(customEvent); 
+applicationContext.publishEvent(customEvent);
 ```
 
 ### 24、FileSystemResource和ClassPathResource有何区别？
